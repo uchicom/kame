@@ -1,6 +1,9 @@
 drop schema if exists pj cascade;
 create schema if not exists pj;
 
+drop schema if exists kame cascade;
+create schema if not exists kame;
+
 --account
 create table pj.account(
 id bigint auto_increment,
@@ -98,5 +101,20 @@ fax_number varchar(11),
 address varchar(128),
 building varchar(64),
 primary key(id)
+);
+
+-- application
+create table kame.application(
+id bigint auto_increment,
+inserted varchar(256) not null,
+insert_datetime timestamp not null,
+updated varchar(256),
+update_datetime timestamp,
+update_seq integer not null default 0,
+name varchar(128) not null,
+api_key varchar(64) not null,
+api_secret varbinary(128) not null,
+primary key(id),
+unique(api_key)
 );
 

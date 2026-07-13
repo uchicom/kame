@@ -19,6 +19,7 @@ import com.uchicom.kame.service.ApplicationAuthService;
 import com.uchicom.kame.service.FileService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -104,7 +105,7 @@ public class FileApiTest extends AbstractTest {
     doReturn(application).when(applicationAuthService).auth(req);
     var file = new File();
     file.content_type = "text/plain";
-    file.data = "hello".getBytes();
+    file.data = "hello".getBytes(StandardCharsets.UTF_8);
     doReturn(file).when(fileService).get(1L, "/hoge/a.txt");
     doReturn("data:text/plain;base64,aGVsbG8=").when(fileService).toDataUrl(file);
 

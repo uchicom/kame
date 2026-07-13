@@ -16,7 +16,7 @@
   }
 </style>
 <script>
-window.onload = () => ut("/pj/user/", "/test/js/anko-mock.js", tests, () => report());
+window.onload = () => ut("/kame/user/", "/test/js/anko-mock.js", tests, () => report());
 
 function report() {
   const report = createClone("reportTemplate");
@@ -65,14 +65,14 @@ const tests = [{
       ifWindow.login();
     },
     path: {
-      '/pj/api/account/login': {
+      '/kame/api/account/login': {
         mock: {result: "OK"},
         assert: [
           payload=>payload.id == "test@test",
           payload=>payload.pass == "test"
         ]
       },
-      '/pj/api/account/check/login': {
+      '/kame/api/account/check/login': {
         mock: {"result": "NG"},
         assert: [
         ]
@@ -85,7 +85,7 @@ const tests = [{
 			ifWindow.dispProject();
     },
     path: {
-      '/pj/api/project/list': {
+      '/kame/api/project/list': {
         mock: {list: [{id: 1, subject:'システム開発', description:'せつめい'}]},
         assert: [
           (payload, window)=>window.querySelectorAll("td")[0].textContent == '1',
@@ -108,7 +108,7 @@ const tests = [{
 			ifWindow.registerProject();
     },
     path: {
-      '/pj/api/customer/list': {
+      '/kame/api/customer/list': {
         mock: {list: [{id: 1, company_name:'顧客1株式会社'},{id: 2, company_name:'顧客2株式会社'},{id: 3, company_name:'顧客3株式会社'}]},
         assert: [
           (payload, window)=>window.querySelector("#customerId").options[0].value == '1',
@@ -119,7 +119,7 @@ const tests = [{
           (payload, window)=>window.querySelector("#customerId").options[2].label == '顧客3株式会社',
         ]
       },
-      '/pj/api/project/register': {
+      '/kame/api/project/register': {
         mock: {message: '登録しました.'},
         assert: [
           (payload, window)=>payload.customerId == '1',

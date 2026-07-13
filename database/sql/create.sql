@@ -1,11 +1,11 @@
-drop schema if exists pj cascade;
-create schema if not exists pj;
+drop schema if exists kame cascade;
+create schema if not exists kame;
 
 drop schema if exists kame cascade;
 create schema if not exists kame;
 
 --account
-create table pj.account(
+create table kame.account(
 id bigint auto_increment,
 inserted varchar(256) not null,
 insert_datetime timestamp not null,
@@ -19,7 +19,7 @@ primary key(id)
 );
 
 -- refresh_token
-create table pj.refresh_token(
+create table kame.refresh_token(
 id bigint auto_increment,
 inserted varchar(256) not null,
 insert_datetime timestamp not null,
@@ -35,7 +35,7 @@ unique(account_id)
 );
 
 -- project
-create table pj.project(
+create table kame.project(
 id bigint auto_increment,
 inserted varchar(256) not null,
 insert_datetime timestamp not null,
@@ -54,7 +54,7 @@ primary key(id)
 );
 
 -- task
-create table pj.task(
+create table kame.task(
 id bigint auto_increment,
 inserted varchar(256) not null,
 insert_datetime timestamp not null,
@@ -73,7 +73,7 @@ primary key(id)
 );
 
 -- task_to_account
-create table pj.task_to_account(
+create table kame.task_to_account(
 id bigint auto_increment,
 inserted varchar(256) not null,
 insert_datetime timestamp not null,
@@ -86,7 +86,7 @@ primary key(id)
 );
 
 -- customer
-create table pj.customer(
+create table kame.customer(
 id bigint auto_increment,
 inserted varchar(256) not null,
 insert_datetime timestamp not null,

@@ -79,6 +79,45 @@ public class FileServiceTest extends AbstractTest {
   }
 
   @Test
+  public void get() {
+    var file = new File();
+    file.id = 1L;
+    file.application_id = 1L;
+    file.path = "/hoge/a.txt";
+    doReturn(file).when(fileDao).findByApplicationIdAndPath(1L, "/hoge/a.txt");
+
+    // test
+    var result = service.get(1L, "/hoge/a.txt");
+
+    // assert
+    assertThat(result).isEqualTo(file);
+  }
+
+  @Test
+  public void get_notFound() {
+    doReturn(null).when(fileDao).findByApplicationIdAndPath(1L, "/hoge/a.txt");
+
+    // test
+    var result = service.get(1L, "/hoge/a.txt");
+
+    // assert
+    assertThat(result).isNull();
+  }
+
+  @Test
+  public void toDataUrl() {
+    var file = new File();
+    file.content_type = "text/plain";
+    file.data = "hello".getBytes(StandardCharsets.UTF_8);
+
+    // test
+    var result = service.toDataUrl(file);
+
+    // assert
+    assertThat(result).isEqualTo("data:text/plain;base64,aGVsbG8=");
+  }
+
+  @Test
   public void getContentType() {
     // test
     var result = service.getContentType("data:image/png;base64,aGVsbG8=");

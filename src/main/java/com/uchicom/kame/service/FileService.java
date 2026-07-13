@@ -35,6 +35,14 @@ public class FileService {
     }
   }
 
+  public File get(long applicationId, String path) {
+    return fileDao.findByApplicationIdAndPath(applicationId, path);
+  }
+
+  public String toDataUrl(File file) {
+    return "data:" + file.content_type + ";base64," + Base64.getEncoder().encodeToString(file.data);
+  }
+
   String getContentType(String dataUrl) {
     var matcher = DATA_URL_PATTERN.matcher(dataUrl);
     if (!matcher.matches()) {

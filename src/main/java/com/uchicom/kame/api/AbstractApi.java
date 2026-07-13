@@ -30,6 +30,10 @@ public abstract class AbstractApi extends AbstractDb {
         () -> transaction(String.valueOf((Long) req.getAttribute("accountId")), function));
   }
 
+  public Object transExecutor(String executor, ThrowingSupplier<Object, Throwable> function) {
+    return handling(() -> transaction(executor, function));
+  }
+
   public ErrorDto errorApi(Throwable e) {
     logger.log(Level.SEVERE, "APIエラー", e);
     return new ErrorDto("エラーが発生しました。管理者に連絡してください。");

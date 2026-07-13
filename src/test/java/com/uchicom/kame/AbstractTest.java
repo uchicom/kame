@@ -32,6 +32,7 @@ public abstract class AbstractTest {
 
   protected void createApiMock(AbstractApi abstractApi) {
     createMockTrans(abstractApi);
+    createMockTransExecutor(abstractApi);
     createMockRefer(abstractApi);
     var errorDto = new ErrorDto("エラーテスト");
     doReturn(errorDto).when(abstractApi).errorApi(any());
@@ -46,6 +47,17 @@ public abstract class AbstractTest {
             })
         .when(abstractApi)
         .trans(any(), any());
+  }
+
+  <T> void createMockTransExecutor(AbstractApi abstractApi) {
+    doAnswer(
+            invocation -> {
+              ThrowingSupplier<T, Throwable> supplier =
+                  invocation.<ThrowingSupplier<T, Throwable>>getArgument(1);
+              return abstractApi.handling(supplier);
+            })
+        .when(abstractApi)
+        .transExecutor(any(), any());
   }
 
   <T> void createMockRefer(AbstractApi abstractApi) {

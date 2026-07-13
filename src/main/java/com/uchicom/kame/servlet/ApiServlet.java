@@ -8,6 +8,7 @@ import com.uchicom.kame.annotation.Path;
 import com.uchicom.kame.api.AbstractApi;
 import com.uchicom.kame.api.AccountApi;
 import com.uchicom.kame.api.CustomerApi;
+import com.uchicom.kame.api.FileApi;
 import com.uchicom.kame.api.ProjectApi;
 import com.uchicom.kame.api.TaskApi;
 import com.uchicom.kame.dto.response.ErrorDto;
@@ -52,6 +53,7 @@ public class ApiServlet extends HttpServlet {
       CustomerApi customerApi,
       ProjectApi projectApi,
       TaskApi taskApi,
+      FileApi fileApi,
       AuthService authService,
       ObjectMapper objectMapper,
       Validator validator,
@@ -60,6 +62,7 @@ public class ApiServlet extends HttpServlet {
     register(customerApi);
     register(projectApi);
     register(taskApi);
+    register(fileApi);
     this.authService = authService;
     this.objectMapper = objectMapper;
     this.validator = validator;

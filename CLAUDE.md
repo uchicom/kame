@@ -64,7 +64,7 @@ anko/
 
 ```bash
 # サーバー起動
-mvn exec:java "-Dexec.mainClass=com.uchicom.pj.Main"
+mvn exec:java "-Dexec.mainClass=com.uchicom.kame.Main"
 
 # フォーマット適用
 mvn spotless:apply
@@ -126,9 +126,9 @@ public class LoginDto {
 
 ```bash
 java -cp ~/.m2/repository/com/h2database/h2/2.4.240/2.4.240.jar org.h2.tools.RunScript \
-	-url "jdbc:h2:./database/pj;AUTO_COMPACT_FILL_RATE=0;CIPHER=AES" \
-	-user pj \
-	-password "pj pj" \
+	-url "jdbc:h2:./database/kame;AUTO_COMPACT_FILL_RATE=0;CIPHER=AES" \
+	-user kame \
+	-password "kame kame" \
 	-script ./database/sql/create.sql \
 	-showResults
 ```

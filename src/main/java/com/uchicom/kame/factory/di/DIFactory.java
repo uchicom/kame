@@ -25,6 +25,7 @@ public class DIFactory {
         ApiFactory.customerApi(),
         ApiFactory.projectApi(),
         ApiFactory.taskApi(),
+        ApiFactory.fileApi(),
         ServiceFactory.authService(),
         ServiceFactory.objectMapper(),
         validator(),

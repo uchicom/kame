@@ -3,6 +3,7 @@ package com.uchicom.kame.factory.di;
 
 import com.uchicom.kame.api.AccountApi;
 import com.uchicom.kame.api.CustomerApi;
+import com.uchicom.kame.api.FileApi;
 import com.uchicom.kame.api.ProjectApi;
 import com.uchicom.kame.api.TaskApi;
 
@@ -14,6 +15,10 @@ public class ApiFactory {
 
   static CustomerApi customerApi() {
     return new CustomerApi(ServiceFactory.customerService());
+  }
+
+  static FileApi fileApi() {
+    return new FileApi(ServiceFactory.fileService(), ServiceFactory.applicationAuthService());
   }
 
   static ProjectApi projectApi() {

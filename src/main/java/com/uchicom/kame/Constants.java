@@ -49,4 +49,10 @@ public class Constants {
   /** アクセストークンリフレッシュ間隔(ミリ秒) */
   public static final int REFRESH_INTERVAL_MINUTES =
       Context.getInteger(Config.REFRESH_INTERVAL_MINUTES);
+
+  /** アプリケーションキーヘッダー名. */
+  public static final String APPLICATION_KEY_HEADER = "Application-Key";
+
+  /** トークンヘッダー名. */
+  public static final String TOKEN_HEADER = "Token";
 }

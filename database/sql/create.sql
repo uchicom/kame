@@ -118,3 +118,19 @@ primary key(id),
 unique(api_key)
 );
 
+-- file
+create table kame.file(
+id bigint auto_increment,
+inserted varchar(256) not null,
+insert_datetime timestamp not null,
+updated varchar(256),
+update_datetime timestamp,
+update_seq integer not null default 0,
+application_id bigint not null,
+path varchar(512) not null,
+content_type varchar(128),
+data blob not null,
+primary key(id),
+unique(application_id, path)
+);
+
